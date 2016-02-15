@@ -43,6 +43,15 @@ var UserSearch = React.createClass({
     }
   },
 
+  renderRow(rowData) {
+    return (
+      <Text
+        style={styles.tableCell}>
+        {rowData.node.name}
+      </Text>
+    );
+  },
+
   /**
    * This is the primary React Component Lifecycle Method. It
    * is required in every react component. See:
@@ -50,7 +59,7 @@ var UserSearch = React.createClass({
    */
   render() {
     // this line is boilerplate copy/paste ListView initialization.
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     // grab the users from the prop passed into this component via
     // our Relay container.
@@ -58,10 +67,10 @@ var UserSearch = React.createClass({
 
     if(users.length) {
       // We're in action! Inject these results into the ListView
-      var ds = ds.cloneWithRows(users);
+      var dataSource = dataSource.cloneWithRows(users);
     }
 
-    // If you dont understand the => stuff, just ask!!
+    // If you're confused by the => stuff, just ask!!
     return (
       <View style={styles.view}>
         <TextInput
@@ -69,13 +78,13 @@ var UserSearch = React.createClass({
           autoCorrect={false}
           autoFocus={true}
           autoCapitalize={'none'}
-          placeholder={'Santa Clara University'}
+          placeholder={'Commence searching'}
           onChangeText={searchText => this.setState({searchText})}
         />
         <ListView
           style={styles.listview}
-          dataSource={ds}
-          renderRow={rowData => <Text>{rowData.node.name}</Text>}
+          dataSource={dataSource}
+          renderRow={this.renderRow}
         />
       </View>
     );
@@ -123,12 +132,18 @@ var styles = StyleSheet.create({
     width: vw(100) - 20,
     height: 30,
     margin: 10,
+    paddingLeft: 5,
     backgroundColor: white,
     borderRadius: 5,
   },
 
   listView: {
     padding: 10,
+  },
+
+  tableCell: {
+    padding: 10,
+    fontSize: 18,
   }
 });
 
