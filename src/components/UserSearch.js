@@ -43,6 +43,10 @@ var UserSearch = React.createClass({
     }
   },
 
+  /**
+   * Called by the ListView component for each element in
+   * the dataSource array.
+   */
   renderRow(rowData) {
     return (
       <Text
