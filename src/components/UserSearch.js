@@ -1,12 +1,13 @@
 import React, {
   View,
   Text,
+  Image,
   StyleSheet,
   TextInput,
   ListView,
 } from 'react-native';
 import Relay from 'react-relay';
-import {white, whiteSmoke} from '../lib/colors';
+import {white, whiteSmoke, silverSmoke} from '../lib/colors';
 import {vw, vh} from '../lib/viewPercentages';
 
 const DEFAULT_SEARCH_TEXT = '';
@@ -48,13 +49,27 @@ var UserSearch = React.createClass({
    * the dataSource array.
    */
   renderRow(rowData) {
+    var user = rowData.node;
+
+    // Here we render the data originally fetched by GQL via Relay
     return (
       <View
-        style={styles.listViewCell}>
-        <Text
-          style={{fontSize: 18}}>
-          {rowData.node.name}
-        </Text>
+        style={styles.listViewCell} >
+        <Image
+          source={{uri: user.profilePhotoUrl}}
+          style={styles.profilePhoto}
+        />
+        <View
+          style={styles.metadataContainer} >
+          <Text
+            style={{fontSize: 17}}>
+            {user.name}
+          </Text>
+          <Text
+            style={{fontSize: 14}}>
+            {user.school}
+          </Text>
+        </View>
       </View>
     );
   },
@@ -118,7 +133,9 @@ UserSearch = Relay.createContainer(UserSearch, {
           search(q: $relaySearchText, first: $relayFirstN) {
             edges {
               node {
-                name
+                name,
+                profilePhotoUrl(size:100),
+                school,
               }
             }
           }
@@ -149,8 +166,21 @@ var styles = StyleSheet.create({
   },
 
   listViewCell: {
+    flex: 1,
+    flexDirection: 'row',
     padding: 12,
-  }
+  },
+
+  profilePhoto: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: silverSmoke,
+  },
+
+  metadataContainer: {
+    paddingLeft: 10,
+  },
 });
 
 export default UserSearch;
