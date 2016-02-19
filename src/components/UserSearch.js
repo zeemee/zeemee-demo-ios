@@ -9,7 +9,7 @@ import Relay from 'react-relay';
 import {white, whiteSmoke} from '../lib/colors';
 import {vw, vh} from '../lib/viewPercentages';
 
-const DEFAULT_SEARCH_TEXT = 'alek';
+const DEFAULT_SEARCH_TEXT = '';
 const DEFAULT_FIRST_N = 8;
 
 /**
@@ -49,10 +49,13 @@ var UserSearch = React.createClass({
    */
   renderRow(rowData) {
     return (
-      <Text
-        style={styles.tableCell}>
-        {rowData.node.name}
-      </Text>
+      <View
+        style={styles.listViewCell}>
+        <Text
+          style={{fontSize: 18}}>
+          {rowData.node.name}
+        </Text>
+      </View>
     );
   },
 
@@ -145,9 +148,8 @@ var styles = StyleSheet.create({
     padding: 10,
   },
 
-  tableCell: {
-    padding: 10,
-    fontSize: 18,
+  listViewCell: {
+    padding: 12,
   }
 });
 
