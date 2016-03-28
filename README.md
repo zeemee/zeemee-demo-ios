@@ -27,8 +27,14 @@ A working version of React Native with Relay and GraphQL using ZeeMee's API.
     $ npm install -g react-native-cli
     ```
 
-5. Create an account to log in with at https://www.zeemee.com/students/sign_up
-6. Run the App!
+5. Install project dependencies (make sure you're git project root folder)
+
+    ```
+    $ npm install
+    ```
+
+6. Create an account to log in with at https://www.zeemee.com/students/sign_up
+7. Run the App!
 
     ```
     $ open ios/fix.xcodeproj
