@@ -17,7 +17,7 @@ import request from 'superagent';
 
 var LogIn = React.createClass ({
   getInitialState() {
-    state = {
+    var state = {
       login: false,
       userEmail: '',
       userPassword: '',

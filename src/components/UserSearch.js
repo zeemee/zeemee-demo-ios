@@ -25,7 +25,7 @@ var UserSearch = React.createClass({
   getInitialState() {
     // this state represents the text that currently
     // exists in the search input.
-    state = {
+    var state = {
       searchText: DEFAULT_SEARCH_TEXT,
     };
 

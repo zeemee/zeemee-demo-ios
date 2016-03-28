@@ -1234,6 +1234,22 @@
               "deprecationReason" : null
             },
             {
+              "name" : "providerName",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "String",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
               "name" : "placementThumbnailUrl",
               "description" : null,
               "args" : [],
@@ -1335,6 +1351,11 @@
             {
               "kind" : "OBJECT",
               "name" : "User",
+              "ofType" : null
+            },
+            {
+              "kind" : "OBJECT",
+              "name" : "Ad",
               "ofType" : null
             },
             {
@@ -1930,6 +1951,38 @@
               "deprecationReason" : null
             },
             {
+              "name" : "duration_years",
+              "description" : "Portfolio year duration",
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "Int",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "duration_months",
+              "description" : "Portfolio months duration",
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "Int",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
               "name" : "placements",
               "description" : null,
               "args" : [
@@ -2155,6 +2208,83 @@
                 "kind" : "UNION",
                 "name" : "MediaItem",
                 "ofType" : null
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            }
+          ],
+          "inputFields" : null,
+          "interfaces" : [
+            {
+              "kind" : "INTERFACE",
+              "name" : "Node",
+              "ofType" : null
+            }
+          ],
+          "enumValues" : null,
+          "possibleTypes" : null
+        },
+        {
+          "kind" : "OBJECT",
+          "name" : "Ad",
+          "description" : "A third party advertisement.",
+          "fields" : [
+            {
+              "name" : "id",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "ID",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "photo",
+              "description" : "The image to render for this ad",
+              "args" : [],
+              "type" : {
+                "kind" : "OBJECT",
+                "name" : "Photo",
+                "ofType" : null
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "title",
+              "description" : "Ad title",
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "String",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "destUrl",
+              "description" : "The url to redirect to when this ad is clicked",
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "String",
+                  "ofType" : null
+                }
               },
               "isDeprecated" : false,
               "deprecationReason" : null
@@ -2406,6 +2536,69 @@
               },
               "isDeprecated" : false,
               "deprecationReason" : null
+            },
+            {
+              "name" : "ads",
+              "description" : null,
+              "args" : [
+                {
+                  "name" : "first",
+                  "description" : null,
+                  "type" : {
+                    "kind" : "SCALAR",
+                    "name" : "Int",
+                    "ofType" : null
+                  },
+                  "defaultValue" : null
+                },
+                {
+                  "name" : "after",
+                  "description" : null,
+                  "type" : {
+                    "kind" : "SCALAR",
+                    "name" : "String",
+                    "ofType" : null
+                  },
+                  "defaultValue" : null
+                },
+                {
+                  "name" : "last",
+                  "description" : null,
+                  "type" : {
+                    "kind" : "SCALAR",
+                    "name" : "Int",
+                    "ofType" : null
+                  },
+                  "defaultValue" : null
+                },
+                {
+                  "name" : "before",
+                  "description" : null,
+                  "type" : {
+                    "kind" : "SCALAR",
+                    "name" : "String",
+                    "ofType" : null
+                  },
+                  "defaultValue" : null
+                },
+                {
+                  "name" : "order",
+                  "description" : null,
+                  "type" : {
+                    "kind" : "SCALAR",
+                    "name" : "String",
+                    "ofType" : null
+                  },
+                  "defaultValue" : null
+                }
+              ],
+              "type" : {
+                "kind" : "OBJECT",
+                "name" : "AdConnection",
+                "ofType" : null
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
             }
           ],
           "inputFields" : null,
@@ -2482,6 +2675,84 @@
               "type" : {
                 "kind" : "OBJECT",
                 "name" : "User",
+                "ofType" : null
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "cursor",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "NON_NULL",
+                "name" : "Non-Null",
+                "ofType" : {
+                  "kind" : "SCALAR",
+                  "name" : "String",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            }
+          ],
+          "inputFields" : null,
+          "interfaces" : [],
+          "enumValues" : null,
+          "possibleTypes" : null
+        },
+        {
+          "kind" : "OBJECT",
+          "name" : "AdConnection",
+          "description" : null,
+          "fields" : [
+            {
+              "name" : "edges",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "LIST",
+                "name" : "List",
+                "ofType" : {
+                  "kind" : "OBJECT",
+                  "name" : "AdEdge",
+                  "ofType" : null
+                }
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            },
+            {
+              "name" : "pageInfo",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "OBJECT",
+                "name" : "PageInfo",
+                "ofType" : null
+              },
+              "isDeprecated" : false,
+              "deprecationReason" : null
+            }
+          ],
+          "inputFields" : null,
+          "interfaces" : [],
+          "enumValues" : null,
+          "possibleTypes" : null
+        },
+        {
+          "kind" : "OBJECT",
+          "name" : "AdEdge",
+          "description" : null,
+          "fields" : [
+            {
+              "name" : "node",
+              "description" : null,
+              "args" : [],
+              "type" : {
+                "kind" : "OBJECT",
+                "name" : "Ad",
                 "ofType" : null
               },
               "isDeprecated" : false,
