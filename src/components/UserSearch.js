@@ -1,5 +1,6 @@
 import React, {
   View,
+  Image,
   Text,
   StyleSheet,
   TextInput,
@@ -11,6 +12,7 @@ import {vw, vh} from '../lib/viewPercentages';
 
 const DEFAULT_SEARCH_TEXT = '';
 const DEFAULT_FIRST_N = 8;
+const DEFAULT_PROFILE_PHOTO_SIZE_N = 50;
 
 /**
  * This is the React component. Everything here pertains
@@ -48,11 +50,17 @@ var UserSearch = React.createClass({
    * the dataSource array.
    */
   renderRow(rowData) {
+    var user = rowData.node;
+
     return (
       <View
         style={styles.listViewCell}>
+          <Image
+            style={styles.profilePhoto}
+            source={{uri: user.profilePhotoUrl}}
+          />
         <Text
-          style={{fontSize: 18}}>
+          style={styles.userName}>
           {rowData.node.name}
         </Text>
       </View>
@@ -106,6 +114,7 @@ UserSearch = Relay.createContainer(UserSearch, {
   initialVariables: {
     relaySearchText: DEFAULT_SEARCH_TEXT,
     relayFirstN: DEFAULT_FIRST_N,
+    relayProfilePhotoN: DEFAULT_PROFILE_PHOTO_SIZE_N
   },
 
   // this is the core of our data store. It specifies the data
@@ -118,7 +127,8 @@ UserSearch = Relay.createContainer(UserSearch, {
           search(q: $relaySearchText, first: $relayFirstN) {
             edges {
               node {
-                name
+                name,
+                profilePhotoUrl(size: $relayProfilePhotoN)
               }
             }
           }
@@ -149,8 +159,20 @@ var styles = StyleSheet.create({
   },
 
   listViewCell: {
-    padding: 12,
-  }
+      flex: 1,
+      flexDirection: 'row',
+      padding: 12,
+  },
+
+    profilePhoto: {
+        width: DEFAULT_PROFILE_PHOTO_SIZE_N,
+        height: DEFAULT_PROFILE_PHOTO_SIZE_N,
+        marginRight: 10
+    },
+
+    userName: {
+        fontSize: 18
+    }
 });
 
 export default UserSearch;
