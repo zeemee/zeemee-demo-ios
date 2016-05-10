@@ -2,32 +2,33 @@
 A working version of React Native with Relay and GraphQL using ZeeMee's API.
 
 ### Getting started
-1. Clone this repo
+
+1. Install HomeBrew
+
+    ```
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+    ```
+
+2. Install Node (via HomeBrew)
+
+    ```
+    $ brew install node
+    ```
+
+3. Install React native CLI
+
+    ```
+    $ npm install -g react-native-cli
+    ```
+
+4. Clone this repo & go into it's directory
 
     ```
     $ git clone https://github.com/zeemee/zeemee-demo-ios.git
     $ cd zeemee-demo-ios
     ```
 
-2. Install HomeBrew
-
-    ```
-    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
-    ```
-
-3. Install Node (via HomeBrew)
-
-    ```
-    $ brew install node
-    ```
-
-4. Install React native CLI
-
-    ```
-    $ npm install -g react-native-cli
-    ```
-
-5. Install project dependencies (make sure you're git project root folder)
+5. Install project dependencies
 
     ```
     $ npm install
